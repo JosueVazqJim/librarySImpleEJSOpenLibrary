@@ -6,7 +6,7 @@ import rateLimit from "express-rate-limit";
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 50 // límite de 100 solicitudes por IP cada 15 minutos
+  max: 100 // límite de 100 solicitudes por IP cada 15 minutos
 });
 
 const app = express();
@@ -22,7 +22,6 @@ app.use(express.static("public")); // Use the public folder for static files.
 app.use("/", apiLimiter);
 
 app.get("/", async (req, res) => {
-    res.status(200).end(); // Responde solo con el estado OK
     try {
         const librosData = await axios.get(API_URL + "/trending/daily.json?availability&limit=20");
 
@@ -41,12 +40,14 @@ app.get("/", async (req, res) => {
                 };
             });
 
+        // Renderiza el contenido utilizando EJS y envía la respuesta
         res.status(200).render("index.ejs", { content: librosBuscados });
     } catch (error) {
         console.log(error);
-        res.status(200).render("index.ejs", { content: error.message });
+        res.status(500).render("index.ejs", { content: error.message });
     }
 });
+
 
 app.listen(port, () => {
     console.log("Server running on port " + port);
