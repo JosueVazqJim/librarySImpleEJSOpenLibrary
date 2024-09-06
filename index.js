@@ -6,7 +6,7 @@ import rateLimit from "express-rate-limit";
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 500 // límite de 100 solicitudes por IP cada 15 minutos
+  max: 100 // límite de 100 solicitudes por IP cada 15 minutos
 });
 
 const app = express();
