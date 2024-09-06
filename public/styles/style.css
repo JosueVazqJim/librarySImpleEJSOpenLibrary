@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gradient-background {
+    background: linear-gradient(180deg, #8b9cf4 0%, #9b6dfe 100%) !important;
+    background-size: 180% 180% !important;
+    animation: gradient-animation 18s ease infinite !important;
+}
+
+/*nav bar */
+.navegacion {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.navegacion .nav-link {
+    color: #fff;
+}
+
+.navegacion .nav-item .active {
+    color: #fff !important;
+    background-color: #000000;
+    border-radius: 30px;
+    display: inline-block;
+    width: auto; /* Autoajusta el ancho al contenido y padding */
+    min-width: 105px; /* Asegura que el elemento tenga un ancho mínimo */
+    text-align: center;
+}
+
+/*banner */
+.banner h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.banner h2 {
+    font-size: 2.5rem;
+    font-family: "Poppins", sans-serif;
+}
+
+/*formulario de busqueda */
+.form-select {
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    max-width: 150px; /* Ancho del select */
+}
+
+/*contenido */
+.content {
+    align-items: center;
+    justify-content: center;
+    background-color: #feffcb;
+    color: #000000;
+}
+
+.content .card {
+    background-color: transparent;
+}
+
+.card {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.prueba {
+    background-color: #feffcb;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el wrapper ocupe al menos el 100% de la altura de la ventana */
+}
+
+.card img {
+    width: 80px;
+    height: 120px;
+}
+
+.card-body p {
+    color: #000000 !important;
+}
+
+.authorCard .card {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd; /* Puedes ajustar el borde según sea necesario */
+}
+
+.authorCard .card-img-left {
+    width: 150px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: auto;
+    object-fit: cover;
+}
+
+.authorCard .card-body {
+    flex: 1;
+    padding: 15px;
+    text-align: left;
+}
+
+.authorCard .card-title {
+    font-size: 1.25rem;
+}
+
+.authorCard .card-subtitle {
+    font-size: 1rem;
+}
+
+.authorCard .card-text {
+    flex-grow: 1;
+}
+
+.authorCard .btn-full {
+    width: 40%;
+}
+
+/*footer */
+footer h5 {
+    color: #fff;
+    font-weight: bold;
+}
+footer a,
+p {
+    color: #fff !important;
+}
+
+/*error */
+.alert {
+    background-color: #f8d7da; /* Color de fondo para el alert */
+    color: #721c24; /* Color del texto */
+    border: 1px solid #f5c6cb; /* Borde del alert */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    padding: 1.5rem; /* Relleno interno del alert */
+    margin: 1.5rem auto; /* Márgenes para centrar el alert */
+    max-width: 80%; /* Ancho máximo del alert */
+    text-align: center; /* Centrando el texto */
+    font-size: 1.25rem; /* Tamaño de fuente del texto del alert */
+}
+
+.alert-heading {
+    font-size: 1.5rem; /* Tamaño de fuente del título del alert */
+    margin-bottom: 0.5rem; /* Espacio debajo del título */
+}
+
+.alert p {
+    margin: 0; /* Elimina el margen alrededor del párrafo */
+}
+
+.botonesLibros {
+    /*quitamos los estilos que trae el ellemento a */
+    text-decoration: none;
+    color: #fff;
+    
+}
