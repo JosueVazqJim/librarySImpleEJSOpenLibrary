@@ -38,6 +38,7 @@
             <% content.forEach(element => { %>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 d-flex flex-column">
+                        <img src="https://covers.openlibrary.org/b/id/<%= element.cover_i %>-M.jpg" class="card-img-top mt-1" alt="Book cover" />
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title" id="titleBook"><%= element.title || 'No Title Available' %></h5>
                             <h6 class="card-subtitle mb-2 text-muted" id="author"><%= element.author_name || 'Unknown Author' %></h6>
