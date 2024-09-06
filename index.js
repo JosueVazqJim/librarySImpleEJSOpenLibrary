@@ -2,6 +2,12 @@ import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import rateLimit from "express-rate-limit";
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 50 // límite de 100 solicitudes por IP cada 15 minutos
+});
 
 const app = express();
 const port = 3001;
@@ -9,16 +15,17 @@ const port = 3001;
 const API_URL = "https://openlibrary.org";
 
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
-
 app.use(morgan("combined")); // Log requests to the console
-
 app.use(express.static("public")); // Use the public folder for static files.
 
+// Aplica el limitador en la ruta raíz "/"
+app.use("/", apiLimiter);
 
 app.get("/", async (req, res) => {
+    res.status(200).end(); // Responde solo con el estado OK
     try {
         const librosData = await axios.get(API_URL + "/trending/daily.json?availability&limit=20");
-     
+
         let librosBuscados = 
             librosData.data.works.map((libro) => {
                 return {
@@ -33,13 +40,11 @@ app.get("/", async (req, res) => {
                     current_edition: libro.cover_edition_key || "No edition key available",
                 };
             });
-            
-        
-        //console.log(librosBuscados);
-        res.status(200).render("index.ejs", { content: librosBuscados});
+
+        res.status(200).render("index.ejs", { content: librosBuscados });
     } catch (error) {
         console.log(error);
-        res.status(200).render("index.ejs", {content: error.message});
+        res.status(200).render("index.ejs", { content: error.message });
     }
 });
 
