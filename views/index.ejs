@@ -34,19 +34,8 @@
 <div class="container-fluid content mt-5">
     <div class="row">
         <% if (locals.content.length !== 0) { %>
-            <p id="searhResult"></p>
-            <% content.forEach(element => { %>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 d-flex flex-column">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title" id="titleBook"><%= element.title || 'No Title Available' %></h5>
-                            <h6 class="card-subtitle mb-2 text-muted" id="author"><%= element.author_name || 'Unknown Author' %></h6>
-                            <p class="card-subtitle text-muted" id="year"><%= element.first_publish_year || 'Year Not Available' %></p>
-
-                        </div>
-                    </div>
-                </div>
-            <% }) %>
+            <p id="searhResult">hola</p>
+            
         <% } %>
         
     </div>
