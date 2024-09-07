@@ -77,9 +77,9 @@
 
                             <h5 class="mt-4">Other Editions</h5>
                             <% if (content.editions_data.length > 0) { %>
-                                <div class="editions-container">
+                                <div class="editions-container row">
                                     <% content.editions_data.forEach(ed => { %>
-                                        <div class="edition-card">
+                                        <div class="edition-card col-lg-4 col-md-4 col-sm-4">
                                             <h6 class="edition-title"><%= ed.title %></h6>
                                             <p><strong>Authors:</strong> <%= content.author_name %></p>
                                             <p><strong>Publish Date:</strong> <%= ed.publish_date %></p>

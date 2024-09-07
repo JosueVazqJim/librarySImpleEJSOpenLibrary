@@ -160,12 +160,7 @@ p {
 
 /*estilos ediciones */
 /* Estilos para el contenedor de ediciones */
-.editions-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem; /* Espacio entre tarjetas */
-    padding: 1rem;
-}
+
 
 /* Estilos para cada tarjeta de edición */
 .edition-card {
@@ -174,7 +169,6 @@ p {
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra sutil */
     padding: 1rem;
-    width: calc(33.333% - 1rem); /* Tres tarjetas por fila, ajusta el ancho */
     box-sizing: border-box; /* Incluye padding y borde en el ancho total */
 }
 
