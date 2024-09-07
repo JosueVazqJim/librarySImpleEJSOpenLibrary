@@ -157,3 +157,36 @@ p {
     color: #fff;
     
 }
+
+/*estilos ediciones */
+/* Estilos para el contenedor de ediciones */
+.editions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Espacio entre tarjetas */
+    padding: 1rem;
+}
+
+/* Estilos para cada tarjeta de edición */
+.edition-card {
+    background-color: #fff; /* Fondo blanco para las tarjetas */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra sutil */
+    padding: 1rem;
+    width: calc(33.333% - 1rem); /* Tres tarjetas por fila, ajusta el ancho */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+}
+
+/* Estilo para el título de cada tarjeta */
+.edition-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estilo para el contenido dentro de cada tarjeta */
+.edition-card p {
+    margin: 0.5rem 0;
+}

@@ -7,7 +7,7 @@
     <h2 class="text-dark">Uncover stories, ideas, and more.</h2>
 
     <!-- Formulario de búsqueda -->
-    <form class="row form" action="/"  id="searchForm">
+    <form class="row form" action="/" method="POST" id="searchForm">
         <div class="col-md-8 offset-md-2 mt-3 d-flex gap-lg-4 gap-md-4 gap-sm-2">
             <div class="input-group">
                 <select class="form-select" id="filterSelect" name="search_param">
@@ -33,9 +33,81 @@
 <!-- Contenido de la pagina -->
 <div class="container-fluid content mt-5">
     <div class="row">
-        <% if (locals.content.length !== 0) { %>
-            <p id="searhResult">hola</p>
-            
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div class="alert alert-danger ">
+                <h4 class="alert-heading"><%= error.title %></h4>
+                <p><%= error.description %></p>
+            </div>
+        <% } %>
+        
+        <% if (locals.content.length !== 0 && type === "book") { %>
+            <p id="searhResult"></p>
+            <%#  %>
+            <% content.forEach(element => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 d-flex flex-column">
+                        <img src="https://covers.openlibrary.org/b/id/<%= element.cover_i %>-M.jpg" class="card-img-top mt-1" alt="Book cover" />
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" id="titleBook"><%= element.title || 'No Title Available' %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted" id="author"><%= element.author_name || 'Unknown Author' %></h6>
+                            <p class="card-subtitle text-muted" id="year"><%= element.first_publish_year || 'Year Not Available' %></p>
+                            <p class="card-text mb-4">
+                                <% 
+                                    let descriptionText = '';
+                                    
+                                    if (typeof element.description === 'string') {
+                                        descriptionText = element.description;
+                                    } else if (typeof element.description === 'object' && element.description !== null) {
+                                        descriptionText = element.description.value || 'No description available';
+                                    } else {
+                                        descriptionText = 'No description available';
+                                    }
+
+                                    descriptionText = descriptionText.length > 120 
+                                        ? descriptionText.substring(0, descriptionText.lastIndexOf(' ', 120)) + '...' 
+                                        : descriptionText;
+                                %>
+                                <%= descriptionText %>
+                            </p>
+                            <div class="mt-auto">
+                                <button type="button" class="btn btn-dark btn-full watch-button" >
+                                    <a href="/viewBook?id=<%= element.key %>" class="botonesLibros">Watch</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } %>
+        <%# ahora verificara si contentAuthors %>
+        <% if (locals.content.length !== 0 && type === "author") { %>
+            <%#  %>
+            <% content.forEach(element => { %>
+                <div class="col-md-12 mb-4 authorCard" key="<%= element.key %>">
+                    <div class="card h-100 d-flex flex-row">
+                        <img src="https://covers.openlibrary.org/a/olid/<%= element.key %>-M.jpg" class="card-img-left" alt="author photo" />
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" id="name"><%= element.name %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted" id="birth_date"><%= element.birth_date %></h6>
+                            <p class="card-subtitle text-muted" id="top_work"><%= element.top_work %></p>
+                            <p class="card-text mb-4">
+                                <% 
+                                    let descriptionText = element.bio;
+                                    descriptionText = descriptionText.length > 120 
+                                        ? descriptionText.substring(0, descriptionText.lastIndexOf(' ', 120)) + '...' 
+                                        : descriptionText;
+                                %>
+                                <%= descriptionText %>
+                            </p>
+                            <div class="mt-auto">
+                                <button type="button" class="btn btn-dark btn-full watch-button" >
+                                    <a href="# ">Watch</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
         <% } %>
         
     </div>
